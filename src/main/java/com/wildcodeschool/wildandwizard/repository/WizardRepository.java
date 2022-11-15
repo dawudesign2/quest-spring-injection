@@ -1,12 +1,16 @@
 package com.wildcodeschool.wildandwizard.repository;
 
 import com.wildcodeschool.wildandwizard.entity.Wizard;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Repository
 public class WizardRepository implements WizardDao {
 
     private static List<Wizard> wizards = new ArrayList<>(
@@ -67,5 +71,13 @@ public class WizardRepository implements WizardDao {
                 break;
             }
         }
+    }
+
+    public static List<Wizard> getWizards() {
+        return wizards;
+    }
+
+    public static void setWizards(List<Wizard> wizards) {
+        WizardRepository.wizards = wizards;
     }
 }
